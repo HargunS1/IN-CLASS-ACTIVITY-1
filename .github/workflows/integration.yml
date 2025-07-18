@@ -1,0 +1,24 @@
+name: Integration Test with Service Container
+
+on: [push]
+
+jobs:
+  test-container:
+    runs-on: ubuntu-latest
+    services:
+      web:
+        image: ghcr.io/${{ github.repository }}:v1
+        ports:
+          - 3000:3000
+        options: >-
+          --health-cmd="curl -f http://localhost:3000 || exit 1"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Wait for container
+        run: sleep 20
+
+      - name: Run Integration Test
+        run: curl http://localhost:3000
