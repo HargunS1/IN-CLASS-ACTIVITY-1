@@ -4,7 +4,7 @@ on: [push]
 
 jobs:
   run-on-linux:
-    runs-on: [self-hosted, linux]
+    runs-on: [self-hosted]
     steps:
       - uses: actions/checkout@v3
       - run: echo "Running on Linux machine"
