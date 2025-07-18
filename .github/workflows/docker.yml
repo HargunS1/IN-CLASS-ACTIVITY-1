@@ -24,3 +24,4 @@ jobs:
           docker build -t ghcr.io/${{ github.repository }}:v1 .
           docker push ghcr.io/${{ github.repository }}:v1
           
+          
